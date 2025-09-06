@@ -9,7 +9,7 @@ import { QuerySchema } from '$lib/domain/schemas';
 
 // TODO: fix any type
 @injectable()
-export class BaseRepositoryImpl<T extends Table> implements BaseRepository<T> {
+export class BaseRepositoryImpl<T> implements BaseRepository<T> {
 	constructor(
 		@inject(LibSQLDatabase) protected db: LibSQLDatabase,
 		protected schema: Table
@@ -33,9 +33,9 @@ export class BaseRepositoryImpl<T extends Table> implements BaseRepository<T> {
 	}
 
 	async create(data: T): Promise<InferInsertModel<typeof this.schema>> {
-		const parsed = createSelectSchema(this.schema).parse(data);
+		const parsed = createSelectSchema(this.schema).omit({ id: true }).parse(data);
 
-		return this.db.insert(this.schema).values(parsed);
+		return this.db.insert(this.schema).values(parsed).returning();
 	}
 
 	async update(id: number, data: Partial<Omit<T, 'id'>>): Promise<T | null> {

@@ -3,7 +3,7 @@ import { type InferSelectModel, type InferInsertModel, Table } from 'drizzle-orm
 
 import { QuerySchema } from '$lib/domain/schemas';
 
-export interface BaseRepository<T extends Table> {
+export interface BaseRepository<T> {
 	getAll(filters?: z.infer<typeof QuerySchema>): Promise<InferSelectModel<Table>[]>;
 
 	getById(id: number): Promise<InferSelectModel<Table> | null>;

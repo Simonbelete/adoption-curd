@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
+	import { AnimalCard } from '$lib/presentation/components';
 
 	let { data }: PageProps = $props();
 </script>
 
-
-<ul>
-	{#each data.animals as user}
-		<li>{user.name}</li>
+<div class="grid grid-cols-4 gap-4">
+	{#each data.animals as item}
+		<AnimalCard animal={item} />
 	{/each}
-</ul>
+</div>

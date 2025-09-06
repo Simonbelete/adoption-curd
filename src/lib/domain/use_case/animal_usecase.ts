@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 
-// import { AnimalRepository } from '$lib/domain/repository';
 import type { AnimalRepositoryImpl } from '$lib/infrastructure/repository';
+import type { Animal } from '$lib/domain/model';
 
 @injectable()
 export class AnimalUseCase {
@@ -9,5 +9,9 @@ export class AnimalUseCase {
 
 	async getAll() {
 		return this.repository.getAll();
+	}
+
+	async create(data: Animal) {
+		return this.repository.create(data);
 	}
 }
