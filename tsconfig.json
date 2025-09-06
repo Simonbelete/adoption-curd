@@ -9,7 +9,10 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"moduleResolution": "bundler"
+		"moduleResolution": "bundler",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true, // optional but required for some DI frameworks
+		"strictPropertyInitialization": false // often needed for decorator-based DI
 	},
 	"emitemitDecoratorMetadata": true
 	// Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
