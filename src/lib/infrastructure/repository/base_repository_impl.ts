@@ -28,8 +28,10 @@ export class BaseRepositoryImpl<T> implements BaseRepository<T> {
 	}
 
 	async getById(id: number): Promise<InferSelectModel<typeof this.schema> | null> {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		return this.db.select({ id: id as any }).from(this.schema);
+		return this.db
+			.select()
+			.from(this.schema)
+			.where(eq((this.schema as any).id, id));
 	}
 
 	async create(data: T): Promise<InferInsertModel<typeof this.schema>> {

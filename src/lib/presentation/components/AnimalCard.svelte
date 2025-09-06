@@ -4,9 +4,9 @@
 	export let animal: Animal;
 </script>
 
-<div class="card bg-gray-100 shadow-sm">
+<a class="card bg-gray-100 shadow-sm" href="/animals/{animal.id}">
 	<figure>
-		<img src={animal.name} alt={animal.name} />
+		<img src={animal?.image} alt={animal.name} />
 	</figure>
 	<div class="card-body">
 		<h2 class="card-title text-gray-700">
@@ -16,8 +16,8 @@
 			{animal.description}
 		</p>
 		<div class="card-actions justify-end">
-			<div class="badge badge-outline">Fashion</div>
-			<div class="badge badge-outline">Products</div>
+			<!-- <div class="badge badge-outline">Age</div> -->
+			<!-- <div class="badge badge-outline">-</div> -->
 		</div>
 	</div>
-</div>
+</a>
